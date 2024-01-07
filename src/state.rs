@@ -10,10 +10,10 @@ enum GameMode {
 
 pub struct State {
     mode: GameMode,
-    pub frame_time: f32,
-    pub player: Player,
-    pub obstacle: Obstacle,
-    pub score: i32,
+    frame_time: f32,
+    player: Player,
+    obstacle: Obstacle,
+    score: i32,
 }
 
 impl State {
@@ -27,7 +27,7 @@ impl State {
         }
     }
 
-    pub fn restart(&mut self) {
+    fn restart(&mut self) {
         self.mode = GameMode::Playing;
         self.player = Player::new(5, 25);
         self.frame_time = 0.0;
@@ -35,7 +35,7 @@ impl State {
         self.score = 0;
     }
 
-    pub fn main_menu(&mut self, ctx: &mut BTerm) {
+    fn main_menu(&mut self, ctx: &mut BTerm) {
         ctx.cls();
         ctx.print_centered(5, "Welcome to Flappy Dragon");
         ctx.print_centered(8, "(P) Play Game");
@@ -50,7 +50,7 @@ impl State {
         }
     }
 
-    pub fn play(&mut self, ctx: &mut BTerm) {
+    fn play(&mut self, ctx: &mut BTerm) {
         ctx.cls_bg(NAVY);
         self.frame_time += ctx.frame_time_ms;
 
@@ -77,7 +77,7 @@ impl State {
         }
     }
 
-    pub fn dead(&mut self, ctx: &mut BTerm) {
+    fn dead(&mut self, ctx: &mut BTerm) {
         ctx.cls();
         ctx.print_centered(5, "You are dead!");
         ctx.print_centered(6, &format!("You earned {} points", self.score));

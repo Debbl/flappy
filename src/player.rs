@@ -3,7 +3,7 @@ use bracket_lib::terminal::{to_cp437, BTerm, BLACK, YELLOW};
 pub struct Player {
     pub x: i32,
     pub y: i32,
-    pub velocity: f32,
+    velocity: f32,
 }
 
 impl Player {
